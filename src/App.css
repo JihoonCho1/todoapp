@@ -36,3 +36,221 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background: url(backgroundmain.jpg) no-repeat 0px 0px / cover;
+}
+
+.hide {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.NavBar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  z-index: 10;
+
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+
+.NavBar ul {
+    float: right;
+    padding-right: 20px;
+}
+.NavBar li {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.NavBar li a {
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+    font-weight: 500;
+    padding: 10px 25px;
+    text-decoration: none;
+    color: white;
+
+}
+
+.NavBar li a.starthere {
+    color: black;
+    background-color: white;
+    padding: 10px 5px;
+    font-weight: 600;
+}
+
+.NavBar img.logo {
+  position: fixed;
+  top: -20px;
+  left: 55px;
+  transform: translateX(-50%);
+  height: 100px;
+  width: auto;
+  z-index: 20;
+}
+
+.Intro {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  padding-bottom: 10px;
+  transform: translateX(-50%);  
+  width: 30%;
+  border-radius: 0.2rem;
+
+  color: white;
+
+}
+
+.Intro p.smallText{
+  font-size: 20px;
+  font-family: "playfair display", sans-serif;
+  margin-bottom: 0;
+}
+
+.Intro p.prompt {
+  font-size: 50px;
+  font-family: "Open Sans", "light 300";
+  margin-top: 5px;
+  line-height: 60px;
+}
+
+#startbtn {
+  color: black;
+  background-color: white;
+  padding: 20px 15px;
+  font-weight: 550;
+  font-size: 15px;
+  border-radius: 0.2rem;
+  border: 2px solid rgb(185, 185, 185);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+#startbtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgb(34, 24, 12);
+  transition: 0.5s;
+  z-index: -1;
+  
+}
+
+#startbtn:hover::before {
+  width: 100%;  
+}
+
+#startbtn:hover {
+  color: white;
+  transition: 0.5s;
+}
+
+.visible {
+    position: fixed;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    list-style-type: none;
+    background-color: transparent;
+    text-align: center;
+    color: white;
+    z-index: 10;
+}
+
+.visible ul {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.53);
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  right: 8px;
+  top: -7px;
+  border-radius: 2rem;
+}
+
+.visible a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  padding: 10px 25px;
+}
+.visible li a.starthere {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 2rem;
+  transition-duration: 0.23s;
+}
+
+.visible li {
+  display: inline-block;
+  cursor: pointer;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-radius: 2rem;
+  transition-duration: 0.23s;
+}
+
+.visible li:hover{
+  background-color: rgba(84, 84, 84, 0.448);
+  transition-duration: 0.23s;
+}
+
+.visible img.logo {
+  position: fixed;
+  top: -20px;
+  left: 55px;
+  transform: translateX(-50%);
+  height: 100px;
+  width: auto;
+  z-index: 20;
+}
+
+
+
+
+
+.App .test {
+  position: absolute;
+  left: 50%;  
+  transform: translateX(-50%);
+  margin-top: 100%;
+}
+
+.App .bodyobserver {
+  position: absolute;
+  top: 105%;
+  padding-bottom: 100%
+}
+
