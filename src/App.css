@@ -38,7 +38,10 @@
 }
 
 body {
-  background: url(backgroundmain.jpg) no-repeat 0px 0px / cover;
+  background: url('./backgroundmain.jpg') no-repeat 0px 0px / cover;
+
+  min-height:100vh;
+  margin: 0;
 }
 
 .hide {
@@ -55,9 +58,13 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 10px 0;
-  text-align: center;
+  padding: 10px 30px; 
   z-index: 10;
+  box-sizing: border-box;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   opacity: 1;
   transform: translateY(0);
@@ -65,14 +72,20 @@ body {
 }
 
 
+
 .NavBar ul {
-    float: right;
-    padding-right: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
 }
+
 .NavBar li {
-    display: inline-block;
-    cursor: pointer;
+  cursor: pointer;
 }
+
+
 
 .NavBar li a {
     position: relative;
@@ -93,13 +106,82 @@ body {
 }
 
 .NavBar img.logo {
+  /* position: fixed;
+  top: -18px;
+  left: 65px;
+  transform: translateX(-50%);
+  height: 110px;
+  width: auto;
+  z-index: 20; */
+  height: 60px;
+  width: auto;
+  
+}
+
+.NavBar.visible {
+  
+}
+
+
+.NavBar.visible ul {
+  /* position: absolute; */
+  margin-left: auto;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.53);
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  /* right: 8px;
+  top: -7px; */
+  border-radius: 2rem;
+}
+
+.NavBar.visible a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  padding: 10px 25px;
+}
+.NavBar.visible li a.starthere {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 2rem;
+  transition-duration: 0.23s;
+}
+
+.NavBar.visible li {
+  display: inline-block;
+  cursor: pointer;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-radius: 2rem;
+  transition-duration: 0.23s;
+}
+
+.NavBar.visible li:hover{
+  background-color: rgba(84, 84, 84, 0.448);
+  transition-duration: 0.23s;
+}
+
+.NavBar.visible img.logo {
   position: fixed;
-  top: -20px;
+  /* top: -20px;
   left: 55px;
   transform: translateX(-50%);
   height: 100px;
   width: auto;
-  z-index: 20;
+  z-index: 20; */
+  height: 60px; 
+  width: auto;
+  
 }
 
 .Intro {
@@ -167,77 +249,16 @@ body {
   transition: 0.5s;
 }
 
-.visible {
-    position: fixed;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    list-style-type: none;
-    background-color: transparent;
-    text-align: center;
-    color: white;
-    z-index: 10;
-}
 
-.visible ul {
+
+.bodysection {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.53);
-  color: white;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  right: 8px;
-  top: -7px;
-  border-radius: 2rem;
+  top: 165%;
+  left: 2%;
+  font-size: 20px;
+  font-family: "Open Sans", "light 300";
+  font-weight: 2px;
 }
-
-.visible a {
-  text-decoration: none;
-  color: white;
-  font-weight: 600;
-  padding: 10px 25px;
-}
-.visible li a.starthere {
-  background-color: rgba(0, 0, 0, 0);
-  color: white;
-  padding-top: 13px;
-  padding-bottom: 13px;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 2rem;
-  transition-duration: 0.23s;
-}
-
-.visible li {
-  display: inline-block;
-  cursor: pointer;
-  padding-top: 13px;
-  padding-bottom: 13px;
-  padding-left: 0px;
-  padding-right: 0px;
-  border-radius: 2rem;
-  transition-duration: 0.23s;
-}
-
-.visible li:hover{
-  background-color: rgba(84, 84, 84, 0.448);
-  transition-duration: 0.23s;
-}
-
-.visible img.logo {
-  position: fixed;
-  top: -20px;
-  left: 55px;
-  transform: translateX(-50%);
-  height: 100px;
-  width: auto;
-  z-index: 20;
-}
-
-
 
 
 
@@ -250,7 +271,8 @@ body {
 
 .App .bodyobserver {
   position: absolute;
-  top: 105%;
-  padding-bottom: 100%
+  top: 150vh;
+  padding-bottom: 100%;
+  
 }
 

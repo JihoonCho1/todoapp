@@ -1,7 +1,10 @@
 import './App.css';
-import whitelogo from './whitelogo.png';
+import whitelogo from './logo_text.svg';
+import justlogo from './logo_dodo.svg';
+
 import React, { useEffect, useRef, useState } from 'react';
 
+// Main Home page
 function App() {
   const ref = useRef(null);
   const [active, setActive] = useState(false);
@@ -16,7 +19,11 @@ function App() {
           setActive(false); 
         }
       },
-      { threshold: 0.3 }
+      { 
+        threshold: 0,
+        rootMargin: "-100px 0px 0px 0px"
+      }
+      
     );
 
     if (ref.current) {
@@ -28,13 +35,18 @@ function App() {
 
   return (
     <div className="App">
-      <div className={active ? "visible" : "NavBar"}>
-        <img className="logo" src={whitelogo} alt="logo"/>
+      <nav className={`NavBar ${active ? 'visible' : ''}`}>
+        <img 
+          src={active ? justlogo : whitelogo} 
+          className="logo" 
+          alt="Logo" 
+        />
         <ul>
-          <li><a href="index.html">Login</a></li>
-          <li><a className="starthere" href="index.html">Get Started</a></li>
+
+          <li><a href="#login">Login</a></li>
+          <li className="starthere"><a href="#signup">Get Started</a></li>
         </ul>
-      </div>
+      </nav>
 
       <div className="Intro">
         <p className="smallText">To Do with DoDo!</p>
@@ -43,12 +55,23 @@ function App() {
       </div>
 
       <div className="bodyobserver" ref={ref}>
-        <p>Maintainenace</p>
+        <h2></h2>
+      </div>
+
+      <div className='bodysection'>
+        <h2>Start adding your schedule today</h2>
       </div>
 
     </div>
   );
 
 }
+
+
+//Signup Page
+function Login() {
+
+}
+
 
 export default App;
