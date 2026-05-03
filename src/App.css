@@ -37,7 +37,7 @@
   }
 }
 
-body {
+body .home-container {
   background: url('./backgroundmain.jpg') no-repeat 0px 0px / cover;
 
   min-height:100vh;
@@ -106,16 +106,15 @@ body {
 }
 
 .NavBar img.logo {
-  /* position: fixed;
-  top: -18px;
-  left: 65px;
-  transform: translateX(-50%);
-  height: 110px;
-  width: auto;
-  z-index: 20; */
   height: 60px;
   width: auto;
   
+}
+
+.logo-container {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .NavBar.visible {
@@ -124,7 +123,6 @@ body {
 
 
 .NavBar.visible ul {
-  /* position: absolute; */
   margin-left: auto;
   display: flex;
   background-color: rgba(0, 0, 0, 0.53);
@@ -133,8 +131,6 @@ body {
   padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
-  /* right: 8px;
-  top: -7px; */
   border-radius: 2rem;
 }
 
@@ -171,19 +167,43 @@ body {
   transition-duration: 0.23s;
 }
 
-.NavBar.visible img.logo {
-  position: fixed;
-  /* top: -20px;
-  left: 55px;
-  transform: translateX(-50%);
-  height: 100px;
-  width: auto;
-  z-index: 20; */
-  height: 60px; 
-  width: auto;
-  
+.NavBar.visible .logo-container {
+  margin-right: 30px;
+  align-items: center;
+  display: flex;
+  /* Background */
+  background-color: rgba(0, 0, 0, 0.53);
+  padding: 5px 15px;
+  padding-right: 5px;
+  border-radius: 2rem;
 }
 
+.NavBar.visible img.logo {
+  /* Logo Size */
+  height: 50px; 
+  width: auto;
+  /* Transition */
+  transition: opacity 0.4s ease, transform 0.4s ease; 
+}
+
+.logo-text {
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding-left: 5px;
+  margin-right: 20px;
+
+  animation: fadeIn 0.4s ease;
+}
+
+.logo.hide {
+  display: none;
+}
+
+.logo.show {
+  display: block;
+  opacity: 1;
+}
 .Intro {
   position: absolute;
   top: 20%;
@@ -192,9 +212,7 @@ body {
   transform: translateX(-50%);  
   width: 30%;
   border-radius: 0.2rem;
-
   color: white;
-
 }
 
 .Intro p.smallText{
@@ -249,8 +267,6 @@ body {
   transition: 0.5s;
 }
 
-
-
 .bodysection {
   position: absolute;
   top: 165%;
@@ -259,8 +275,6 @@ body {
   font-family: "Open Sans", "light 300";
   font-weight: 2px;
 }
-
-
 
 .App .test {
   position: absolute;

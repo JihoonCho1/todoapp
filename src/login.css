@@ -1,0 +1,30 @@
+.gradient-box {
+    display: grid;
+    place-items: center;
+    background: linear-gradient(91deg, #3E2723 50%, #F9F3E5 50.1%);
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+    align-self: end;
+    margin-bottom: 15%;
+}
+
+.login-container {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    place-items: center;
+    height: 600px;
+    width: 450px;
+
+    /* Design */
+    background: white;
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    border-top: 7px solid #4B5320;
+}
