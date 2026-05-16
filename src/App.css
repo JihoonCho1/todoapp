@@ -38,7 +38,7 @@
 }
 
 body .home-container {
-  background: url('./backgroundmain.jpg') no-repeat 0px 0px / cover;
+  background: url('./images/backgroundmain.jpg') no-repeat 0px 0px / cover;
 
   min-height:100vh;
   margin: 0;
@@ -168,22 +168,18 @@ body .home-container {
 }
 
 .NavBar.visible .logo-container {
-  margin-right: 30px;
-  align-items: center;
   display: flex;
-  /* Background */
-  background-color: rgba(0, 0, 0, 0.53);
-  padding: 5px 15px;
-  padding-right: 5px;
-  border-radius: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem; 
 }
 
 .NavBar.visible img.logo {
   /* Logo Size */
-  height: 50px; 
+  /* height: 55px;  */
   width: auto;
   /* Transition */
-  transition: opacity 0.4s ease, transform 0.4s ease; 
+  /* transition: opacity 0.4s ease, transform 0.4s ease;  */
 }
 
 .logo-text {
@@ -191,6 +187,7 @@ body .home-container {
   font-weight: 700;
   font-size: 1.2rem;
   padding-left: 5px;
+  margin-bottom: 10px;
   margin-right: 20px;
 
   animation: fadeIn 0.4s ease;

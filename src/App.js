@@ -1,6 +1,6 @@
 import './App.css';
-import textlogo from './logo_text.svg';
-import justlogo from './logo_dodo.svg';
+import textlogo from './logo/logo_text.svg';
+import justlogo from './logo/logo_dodo.svg';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import React, { useEffect, useRef, useState } from 'react';
 import Login from './Login';
@@ -47,12 +47,6 @@ function Home() {
               alt="Logo" 
             />
 
-            {/* Changed Logo */}
-            <img
-              src={justlogo}
-              className={`logo ${active ? 'show' : 'hide'}`}
-              alt="justLogo"
-            />
 
             {active && <span className="logo-text">DoDo!</span>}
           </div>
