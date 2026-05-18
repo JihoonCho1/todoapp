@@ -1,0 +1,51 @@
+.signup-page-wrapper {
+  min-height:100vh;
+  margin: 0;
+  overflow: auto;
+}
+.gradient-box {
+    /* F9F3E5 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    min-height: 100vh;
+    width: 100%;
+    position: fixed;
+    /* padding-right: 10%; */
+}
+.head-container {
+    position:fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.back-to-home {
+    margin-left: 3%;
+    margin-top: 2%;
+    display: inline-block;
+}
+.back-to-home::before {
+    content: '< ';
+    font-size: 0px;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 3px;
+    transition: all 0.3s ease;
+}
+
+.back-to-home:hover::before {
+    font-size: 16px;
+}
+
+.backtohome {
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+

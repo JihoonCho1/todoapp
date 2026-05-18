@@ -4,6 +4,7 @@ import justlogo from './logo/logo_dodo.svg';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import React, { useEffect, useRef, useState } from 'react';
 import Login from './Login';
+import Signup from './Signup';
 
 // Main Home page
 function Home() {
@@ -53,7 +54,7 @@ function Home() {
           <ul>
             {/* Change Login and Start here when hover on */}
             <li><Link to="/login">Login</Link></li>
-            <li className="starthere"><a href="#signup">Get Started</a></li>
+            <li className="starthere"><Link to="/Signup">Get Started</Link></li>
           </ul>
         </nav>
 
@@ -88,6 +89,8 @@ function App() {
         <Route path="/" element={<Home />} />
         {/* Login Path */}
         <Route path="/login" element={<Login />} />
+        {/* Signup Path */}
+        <Route path="/signup" element={<Signup />}/>
       </Routes>
     </BrowserRouter>
   );

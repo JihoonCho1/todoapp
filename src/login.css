@@ -26,6 +26,19 @@
 .back-to-home {
     margin-left: 3%;
     margin-top: 2%;
+    display: inline-block;
+}
+.back-to-home::before {
+    content: '< ';
+    font-size: 0px;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 3px;
+    transition: all 0.3s ease;
+}
+
+.back-to-home:hover::before {
+    font-size: 16px;
 }
 
 .backtohome {
@@ -34,6 +47,7 @@
     color: black;
     text-decoration: none;
 }
+
 
 
 .logo {
