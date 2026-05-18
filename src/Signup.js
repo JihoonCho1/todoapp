@@ -24,6 +24,7 @@ function Signup() {
         <div className="signup-page-wrapper">
             <div className="head-container">
                 <p className="back-to-home"><Link to="/" className="backtohome">BACK</Link></p>
+                <p className="login-instead"><Link to="/" className="logininstead">LOGIN</Link></p>
             </div>
             <div className="gradient-box">
                 <div className="signup-container">
@@ -31,20 +32,20 @@ function Signup() {
                     <h2>Get started with DoDo</h2>
                     {/* Login UI code */}
                     <div className="email-group">
-                        <p id="signup-text">EMAIL ADDRESS</p>
+                        <p className="signup-text">EMAIL ADDRESS</p>
                         <input type="text" required placeholder="name@example.com" className="signup-input" onChange={(e) => setEmail(e.target.value)}></input>
                     </div>
                     <div className="password-group">
-                        <p id="signup-text">PASSWORD</p>
+                        <p className="signup-text">PASSWORD</p>
                         <input type="password" required placeholder="password" className="signup-input" onChange={(e) => setPassword(e.target.value)}></input>
                     </div>
                     <div className="confirm-password-group">
-                        <p id="confirm-password-text">CONFIRM PASSWORD</p>
-                        <input type="password" required placeholder="type password again" className="signupt-input" onChange={(e) => setConfirmPassword(e.target.value)}></input>
+                        <p className="signup-text">CONFIRM PASSWORD</p>
+                        <input type="password" required placeholder="type password again" className="signup-input" onChange={(e) => setConfirmPassword(e.target.value)}></input>
                     </div>
-                    <div className="signupt-button-container">
-                        <button id="signupt-button" type="submit" disabled={!isFormValid} onClick={handleSubmit}>
-                        <span>SUBMIT</span>
+                    <div className="signup-button-container">
+                        <button id="signup-button" type="submit" disabled={!isFormValid} onClick={handleSubmit}>
+                            <span>CONTINUE</span>
                         </button>
                     </div>
                 </div>
