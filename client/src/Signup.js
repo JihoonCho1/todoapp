@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import './signup.css';
 import logo from './logo/black_logo_text.svg';
+import axios from 'axios';
 
 function Signup() {
     const [coords, setCoords] = useState({ x: 0, y: 0 });
@@ -32,11 +33,21 @@ function Signup() {
     const isFormValid = isInputNotEmpty && isEmailValid && isConfirmed && hasDigitAndAlpha;
 
     // Event handling for Continue Button (Make account)
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // Sign Up Successfully
         if (isFormValid) {
-            setErrorMessage("Good!");
+            try {
+                const response = await axios.post('http://localhost:5000/register', {
+                    username: email,
+                    password: password
+                });
+
+                alert("Registered Successfully");
+                console.log(response.data);
+            } catch (error) {
+                console.error(error);
+            }
         }
 
         // Errors
