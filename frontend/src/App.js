@@ -62,7 +62,7 @@ function Home() {
         <div className="Intro">
           <p className="smallText">To Do with DoDo!</p>
           <p className="prompt">Plan Better <br></br>Because<br></br>Today Matters</p>
-          <button id="startbtn"><Link to="/Signup">Get Started</Link></button>
+          <Link id="startbtn" to="/Signup">Get Started</Link>
         </div>
 
         {/* Section where it changes the design of navigation bar when observed */}
