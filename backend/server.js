@@ -1,9 +1,12 @@
+const { connectDB } = require('./config/db.js');
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 require('dotenv').config();
+
+const PORT = process.env.PORT || 5000;
 
 // Start Server
 const app = express();
@@ -13,6 +16,10 @@ app.use(cors());
 
 // Temporary Memory (Will be saved to DB)
 const users = [];
+
+
+// Connect to Database
+connectDB();
 
 // Register User
 app.post('/register', async (req, res) => {
