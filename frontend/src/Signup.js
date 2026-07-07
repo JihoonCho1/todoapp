@@ -14,7 +14,7 @@ function Signup() {
     const [errorMessage, setErrorMessage] = useState('');
 
     // Check if email and passwords aren't empty
-    const isInputNotEmpty = email.trim() !== '' && password.trim() !== '' && confirmPassword.trim !== '';
+    const isInputNotEmpty = email.trim() !== '' && password.trim() !== '' && confirmPassword.trim() !== '';
 
     // Check if email is right format
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -38,8 +38,9 @@ function Signup() {
         // Sign Up Successfully
         if (isFormValid) {
             try {
-                const response = await axios.post('/register', {
-                    username: email,
+                const response = await axios.post('/api/auth/register', {
+                    username: email.substring(0, email.indexOf('@')),
+                    email: email,
                     password: password
                 });
 
@@ -47,6 +48,7 @@ function Signup() {
                 console.log(response.data);
             } catch (error) {
                 console.error(error);
+                setErrorMessage(error.response?.data?.message || 'Registration failed');
             }
         }
 
