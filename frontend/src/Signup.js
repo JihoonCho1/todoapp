@@ -1,11 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import './signup.css';
 import logo from './logo/black_logo_text.svg';
 import axios from 'axios';
 
 function Signup() {
+    // Navigate to login page after successful registration
+    const navigate = useNavigate();
+
     const [coords, setCoords] = useState({ x: 0, y: 0 });
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -42,10 +45,12 @@ function Signup() {
                     username: email.substring(0, email.indexOf('@')),
                     email: email,
                     password: password
-                });
-
+                }, { withCredentials: true });
+                
                 alert("Registered Successfully");
                 console.log(response.data);
+                setErrorMessage("");
+                navigate('/login'); // Redirect to login page after successful registration
             } catch (error) {
                 console.error(error);
                 setErrorMessage(error.response?.data?.message || 'Registration failed');

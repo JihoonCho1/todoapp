@@ -11,8 +11,8 @@ const protect = async (req, res, next) => {
         try {
             token = req.headers.authorization.split(" ")[1]; // Get token from header
         
-        const jwtSecret = process.env.JWT_SECRET || process.env.ACCESS_SECRET || 'dev-secret';
-        const decoded = jwt.verify(token, jwtSecret);
+
+        const decoded = jwt.verify(token, process.env.ACCESS_SECRET);
 
         // Access to all the properties of the user except password
         req.user = await User.findById(decoded.id).select("-password"); 

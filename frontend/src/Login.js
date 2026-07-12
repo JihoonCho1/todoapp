@@ -1,20 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useParams, useNavigate  } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import './login.css';
 import logo from './logo/black_logo_text.svg';
+import axios from 'axios';
+import api from './api';
 
-function Login({ onClose }) {
+function Login({ onClose, user, setUser }) {
+  const navigate = useNavigate();
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const isFormValid = email.trim() !== '' && password.trim() !== '';
 
-  const handleSubmit = (e) => {
+  if (user) {
+    return <Navigate to='/dashboard' replace />
+  }
+
+  // need to fix this, DONT SAVE TO LOCAL STORAGE
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isFormValid) {
-      console.log("Login attempt: ", email, password);
+    try {
+      const res = await api.post('/auth/login', { email, password });
+      setUser(res.data);
+      setErrorMessage("");
+      navigate("/dashboard");
+
+    } catch (error) {
+      console.error(error);
+      setErrorMessage("Invalid email or password");
     }
   }
   
@@ -37,6 +53,9 @@ function Login({ onClose }) {
               <div className="password-group">
                 <p id="login-text">PASSWORD</p>
                 <input type="password" required placeholder="password" className="login-input" onChange={(e) => setPassword(e.target.value)}></input>
+              </div>
+              <div className="error-message">
+                <p>{errorMessage}</p>
               </div>
               <div className="login-button-container">
                 <button id="login-button" type="submit" disabled={!isFormValid} onClick={handleSubmit}>

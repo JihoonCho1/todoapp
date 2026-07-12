@@ -8,21 +8,22 @@ const authRoutes = require('./routes/auth.js')
 const router = express.Router();
 require('dotenv').config();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 // Start Server
 const app = express();
 app.use(express.json());  // Defines request body
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000', // Replace with frontend URL
+    credentials: true // Allow cookies to be sent
+}));
 
 // Register Router
 app.use('/api/auth', authRoutes);
 
 // Connect to Database
 connectDB();
-app.listen(5000, () => console.log('Server running at port 5000'));
+app.listen(PORT, () => console.log(`Server running at port ${PORT}`));
 
 
-
-module.exports = router;
