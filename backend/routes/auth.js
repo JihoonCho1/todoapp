@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
         const user = await User.create({ username, email, password });
 
         // Create Token
-        const access_token = jwt.sign({ id: user._id }, process.env.ACCESS_SECRET, { expiresIn: '60s' });
+        const access_token = jwt.sign({ id: user._id }, process.env.ACCESS_SECRET, { expiresIn: '1h' });
 
         
 
@@ -56,7 +56,7 @@ router.post('/login', async (req, res) => {
         }
 
         // Create access token and refresh token
-        const access_token = jwt.sign({ id: user._id }, process.env.ACCESS_SECRET, { expiresIn: '60s' });
+        const access_token = jwt.sign({ id: user._id }, process.env.ACCESS_SECRET, { expiresIn: '1h' });
         const refresh_token = jwt.sign({ id: user._id }, process.env.REFRESH_SECRET, { expiresIn: '30d' });
 
         user.refreshToken = refresh_token;
@@ -98,7 +98,7 @@ router.post('/refresh-token', async (req, res) => {
         console.log("Refreshing Access Token");
 
         // Update to new access token
-        const newAccessToken = jwt.sign({ id: user._id }, process.env.ACCESS_SECRET, { expiresIn: '60s' });
+        const newAccessToken = jwt.sign({ id: user._id }, process.env.ACCESS_SECRET, { expiresIn: '1h' });
         
 
         res.status(200).json({ accessToken: newAccessToken });
@@ -116,5 +116,23 @@ const setRefreshTokenCookie = (res, token) => {
         maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
     })
 }
+
+// Logout
+router.post('/logout', async (req, res) => {
+    const refreshToken = req.cookies.refresh_token;
+
+    // Remove Refresh Token from DB
+    if (refreshToken) {
+        await User.findOneAndUpdate({ refreshToken }, { refreshToken : null});
+    }
+
+    res.clearCookie('refresh-token', {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+    });
+
+    res.status(200).json({ message: "Logged out successfully" });
+})
 
 module.exports = router;

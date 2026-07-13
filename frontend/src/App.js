@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Login from './Login';
 import Signup from './Signup';
 import Dashboard from './Dashboard';
+import Profile from './Profile';
 import ProtectedRoutes from './utils/protectedRoutes';
 import GuestRoutes from './utils/guestRoutes';
 import axios from 'axios';
@@ -144,6 +145,7 @@ function App() {
         <Route element={<ProtectedRoutes user={user} isInitialised={isInitialised}/>}>
           {/* Dashboard Path */}
           <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} />} />
+          <Route path="/profile" element={<Profile setAccessToken={setAccessToken}user={user} setUser={setUser}/>} />
         </Route>
       </Routes>
     </BrowserRouter>

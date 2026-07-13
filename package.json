@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/JihoonCho1/todoapp/issues"
   },
-  "homepage": "https://github.com/JihoonCho1/todoapp#readme"
+  "homepage": "https://github.com/JihoonCho1/todoapp#readme",
+  "dependencies": {
+    "react-icons": "^5.7.0"
+  }
 }
