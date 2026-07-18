@@ -15,6 +15,7 @@ function Profile( { setAccessToken, user, setUser }) {
 
     return (
         <div>
+            <title>Profile</title>
             <button id="Log Out" onClick={handleLogout}>Log Out</button>
         </div>
     )

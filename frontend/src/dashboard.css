@@ -1,3 +1,10 @@
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none; 
+  -ms-user-select: none;
+  user-select: none; 
+}
+
 .bottom-container {
     position: fixed;
     bottom: 7px;
@@ -55,13 +62,63 @@
     pointer-events: none; /* Prevents the icon from interrupting the click target */
 }
 
-.left-side-group {
-    border: 3px;
-    border-color: black;
-    border-radius: 0.2rem;
+.left-side-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .wrap-icon {
     background: none;
     border: none;
 }
+
+.profile-banner {
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-img img {
+    width: 3.5rem;
+    height: auto;
+    margin-right: 2rem;
+}
+
+.profile-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+#name {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    margin: 0;
+}
+
+#status-message {
+    display: flex;
+    top: 0;
+    font-size: 1rem;
+    margin: 0;
+
+}
+
+.status-emoji {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.status-emoji #emoji {
+    
+}
+
