@@ -85,6 +85,12 @@ body {
     flex-direction: row;
     align-items: center;
     cursor: pointer;
+    border-radius: 1rem;
+    transition: 0.5s;
+}
+
+.profile-banner:hover {
+    background: rgba(235, 235, 237, 0.5);
 }
 
 .profile-img img {
