@@ -10,6 +10,7 @@ function Signup() {
     const navigate = useNavigate();
 
     const [coords, setCoords] = useState({ x: 0, y: 0 });
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -17,7 +18,7 @@ function Signup() {
     const [errorMessage, setErrorMessage] = useState('');
 
     // Check if email and passwords aren't empty
-    const isInputNotEmpty = email.trim() !== '' && password.trim() !== '' && confirmPassword.trim() !== '';
+    const isInputNotEmpty = username.trim() !=='' && email.trim() !== '' && password.trim() !== '' && confirmPassword.trim() !== '';
 
     // Check if email is right format
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -42,7 +43,7 @@ function Signup() {
         if (isFormValid) {
             try {
                 const response = await axios.post('/api/auth/register', {
-                    username: email.substring(0, email.indexOf('@')),
+                    username: username,
                     email: email,
                     password: password
                 }, { withCredentials: true });
@@ -86,6 +87,11 @@ function Signup() {
                     <img className="logo" src={logo} />
                     <h2>Get started with DoDo</h2>
                     {/* Login UI code */}
+
+                    <div className="email-group"> 
+                        <p className="signup-text">USERNAME</p>
+                        <input type="text" id="email" required placeholder="username" className="signup-input" onChange={(e) => setUsername(e.target.value)}></input>
+                    </div>
 
                     {/* Email text + Email input box */}
                     <div className="email-group"> 
