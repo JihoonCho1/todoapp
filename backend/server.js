@@ -22,6 +22,10 @@ app.use(cors({
 // Register Router
 app.use('/api/auth', authRoutes);
 
+// Profile update
+const profileRoutes = require("./routes/profile");
+app.use("api/profile", profileRoutes);
+
 // Connect to Database
 connectDB();
 app.listen(PORT, () => console.log(`Server running at port ${PORT}`));

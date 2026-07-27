@@ -26,7 +26,7 @@
 }
 
 .navigate-date h2 {
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 1cqi, 1.9rem);;
     font-family: "Comfortaa", sans-serif;
 }
 
@@ -54,7 +54,7 @@
 .weekdays span {
     width: calc(100% / 7);
     text-align: center;
-    font-size: 1.3rem;
+    font-size: clamp(0.3rem, 1cqi, 1.3rem);
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: .1rem;

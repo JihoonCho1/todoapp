@@ -29,7 +29,7 @@ function Dashboard({ user, setUser }) {
                         <p id="status-message">Status display here!</p>
                     </div>
                     <div className="status-emoji">
-                        <p id="emoji">😴</p>
+                        <p id="emoji">😴 </p>
                     </div>
                     
                 </div>

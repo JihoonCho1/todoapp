@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 // Creating new mini express app just for routers
 const router = express.Router();
 
+
 // Register User
 router.post('/register', async (req, res) => { 
     const {username, email, password} = req.body;

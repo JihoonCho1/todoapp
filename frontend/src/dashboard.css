@@ -84,6 +84,7 @@ body {
     width: 50%;
     flex-direction: row;
     align-items: center;
+    cursor: pointer;
 }
 
 .profile-img img {
@@ -118,7 +119,5 @@ body {
     font-size: 2rem;
 }
 
-.status-emoji #emoji {
-    
-}
+
 
