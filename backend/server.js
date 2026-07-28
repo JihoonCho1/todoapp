@@ -26,6 +26,8 @@ app.use('/api/auth', authRoutes);
 const profileRoutes = require("./routes/profile");
 app.use("api/profile", profileRoutes);
 
+app.use("/uploads", express.static("uploads"));
+
 // Connect to Database
 connectDB();
 app.listen(PORT, () => console.log(`Server running at port ${PORT}`));

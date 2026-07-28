@@ -90,25 +90,53 @@ function Signup() {
 
                     <div className="email-group"> 
                         <p className="signup-text">USERNAME</p>
-                        <input type="text" id="email" required placeholder="username" className="signup-input" onChange={(e) => setUsername(e.target.value)}></input>
+                        <input 
+                            type="text" 
+                            id="email" 
+                            required placeholder="username" 
+                            autoComplete="username" 
+                            className="signup-input" 
+                            onChange={(e) => setUsername(e.target.value)}>
+                        </input>
                     </div>
 
                     {/* Email text + Email input box */}
                     <div className="email-group"> 
                         <p className="signup-text">EMAIL ADDRESS</p>
-                        <input type="text" id="email" required placeholder="name@example.com" className="signup-input" onChange={(e) => setEmail(e.target.value)}></input>
+                        <input 
+                            type="text" 
+                            id="email" 
+                            required placeholder="name@example.com" 
+                            autoComplete="email" 
+                            className="signup-input" 
+                            onChange={(e) => setEmail(e.target.value)}>
+                        </input>
                     </div>
 
                     {/* Password text + Password input box */}
                     <div className="password-group">
                         <p className="signup-text">PASSWORD</p>
-                        <input type="password" id="password" required placeholder="password" className="signup-input" onChange={(e) => setPassword(e.target.value)}></input>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            required placeholder="password" 
+                            autoComplete="new-password" 
+                            className="signup-input" 
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                     </div>
 
                     {/* Confirm password text + Confirm password input box */}
                     <div className="confirm-password-group">
                         <p className="signup-text">CONFIRM PASSWORD</p>
-                        <input type="password" id="confirmPassword" required placeholder="type password again" className="signup-input" onChange={(e) => setConfirmPassword(e.target.value)}></input>
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            required placeholder="type password again" 
+                            autoComplete="new-password" 
+                            className="signup-input" 
+                            onChange={(e) => setConfirmPassword(e.target.value)}>
+                        </input>
                     </div>
 
                     {/* Error Message */}
