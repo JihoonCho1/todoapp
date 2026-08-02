@@ -1,3 +1,14 @@
+.overlay {
+    position: fixed;
+    z-index: 1000;
+}
+.emoji-picker-container {
+    position: fixed;
+    top: 45%;
+    left: 60%;
+    z-index: 2000;
+
+}
 .edit-status-overlay {
     position: fixed;
     top: 0;
@@ -91,4 +102,17 @@
     display: flex;
     margin-left: auto;
     color: rgba(102, 102, 102, 0.589)
+}
+
+.save-button {
+    display: flex;
+    margin-left: auto;
+    padding: 10px 16px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
 }
