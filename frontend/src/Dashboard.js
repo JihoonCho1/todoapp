@@ -47,6 +47,8 @@ function Dashboard({ user, setUser }) {
                 <Calendar className="calendar-view"></Calendar>
             </div>
 
+            
+
             {/* Navigation Bottom bar */}
             <div className="bottom-container">
                 <div id="home-group">

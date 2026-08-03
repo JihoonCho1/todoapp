@@ -7,7 +7,8 @@ import EmojiPicker from 'emoji-picker-react';
 function EditStatus({isOpen, user, setUser, onClose}) {
     const [text, setText] = useState(user.statusMessage);
     const [showPicker, setShowPicker] = useState(false);
-    const [emoji, setEmoji] = useState(user.statusEmoji);
+    const [tempEmoji, setTempEmoji] = useState(user.statusEmoji); // Before Save button is clicked
+    const [emoji, setEmoji] = useState(user.statusEmoji); // After Save button is clicked
     const statusLength = text.length;
 
     if (!isOpen) return null;
@@ -20,7 +21,7 @@ function EditStatus({isOpen, user, setUser, onClose}) {
                         <>
                             <EmojiPicker
                                 onEmojiClick={(emojiData) => {
-                                    setEmoji(emojiData.emoji);
+                                    setTempEmoji(emojiData.emoji);
                                     setShowPicker(false);
                                 }}
                             />
@@ -33,7 +34,11 @@ function EditStatus({isOpen, user, setUser, onClose}) {
                     
                     <div className="header-contents">
                         <h2>Edit Status</h2>
-                        <RxCross1 id="close-button" onClick={onClose}/>
+                        <RxCross1 id="close-button" 
+                            onClick={() => {
+                                setTempEmoji(user.statusEmoji);
+                                onClose();
+                            }}/>
                     </div>  
                     
                     <div className="status-message-field">
@@ -48,7 +53,7 @@ function EditStatus({isOpen, user, setUser, onClose}) {
                                 onChange={(e) => setText(e.target.value)}
                             />
                             <div className="emoji-icon" onClick={() => setShowPicker(!showPicker)}>
-                                {emoji ? emoji : <BsEmojiSmile id="emoji-icon"/>}
+                                {tempEmoji ? tempEmoji : <BsEmojiSmile id="emoji-icon"/>}
                             </div>
                             
                         </div>
@@ -61,6 +66,7 @@ function EditStatus({isOpen, user, setUser, onClose}) {
                                 statusMessage: text,
                                 statusEmoji: emoji
                             });
+                            setEmoji(tempEmoji); // Update the emoji state after saving
                             onClose();
                         }}>Save</button>
                     </div>
