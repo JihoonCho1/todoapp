@@ -19,7 +19,6 @@ function Dashboard({ user, setUser }) {
     const [isProfileEditOpen, setProfileEditOpen] = useState(false);
     
     const handleBannerClick = () => {
-        console.log("Clicked");
         setProfileEditOpen(true);
     }
 
@@ -28,10 +27,10 @@ function Dashboard({ user, setUser }) {
         <div className="dashboard-container">
             <title>Dashboard</title>
 
-            
-
             {/* Left Side Group */}
             <div className="left-side-container">
+
+                {/* Profile Banner */}
                 <div className="profile-banner" onClick={handleBannerClick}>
                     <div className="profile-img">
                         <img src={`http://localhost:8000${user.profileImage}`} alt="profile"></img>
@@ -44,6 +43,8 @@ function Dashboard({ user, setUser }) {
                         <p id="emoji">{user.statusEmoji ? user.statusEmoji : <BsEmojiSmile id="emoji-icon"/>}</p>
                     </div>
                 </div>
+
+                {/* Calendar UI */}
                 <Calendar className="calendar-view"></Calendar>
             </div>
 

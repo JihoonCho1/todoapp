@@ -7,8 +7,7 @@ import EmojiPicker from 'emoji-picker-react';
 function EditStatus({isOpen, user, setUser, onClose}) {
     const [text, setText] = useState(user.statusMessage);
     const [showPicker, setShowPicker] = useState(false);
-    const [tempEmoji, setTempEmoji] = useState(user.statusEmoji); // Before Save button is clicked
-    const [emoji, setEmoji] = useState(user.statusEmoji); // After Save button is clicked
+    const [tempEmoji, setTempEmoji] = useState(user?.statusEmoji || null); // Before Save button is clicked
     const statusLength = text.length;
 
     if (!isOpen) return null;
@@ -29,11 +28,11 @@ function EditStatus({isOpen, user, setUser, onClose}) {
                     )}
             </div>
             <div className="edit-status-overlay">
-                
                 <div className="status-contents">
-                    
                     <div className="header-contents">
                         <h2>Edit Status</h2>
+
+                        {/* Close Button */}
                         <RxCross1 id="close-button" 
                             onClick={() => {
                                 setTempEmoji(user.statusEmoji);
@@ -41,6 +40,7 @@ function EditStatus({isOpen, user, setUser, onClose}) {
                             }}/>
                     </div>  
                     
+                    {/* Status Message Field */}
                     <div className="status-message-field">
                         <p className="input-text">Status Message:</p>
                         <div className="input-box-wrapper">
@@ -52,21 +52,26 @@ function EditStatus({isOpen, user, setUser, onClose}) {
                                 maxLength={40}
                                 onChange={(e) => setText(e.target.value)}
                             />
+
+                            {/* Emoji button to pick status emoji */}
                             <div className="emoji-icon" onClick={() => setShowPicker(!showPicker)}>
                                 {tempEmoji ? tempEmoji : <BsEmojiSmile id="emoji-icon"/>}
                             </div>
-                            
                         </div>
+
+                        {/* Character Count */}
                         <p id="count-chars">{statusLength}/40</p>
+
+                        {/* Save Button */}
                         <button className="save-button" onClick={() => {
                             // Temporarily store the updated status message and emoji in the user state
                             // need to use API to update the user status in the backend
                             setUser({
                                 ...user,
                                 statusMessage: text,
-                                statusEmoji: emoji
+                                statusEmoji: tempEmoji
                             });
-                            setEmoji(tempEmoji); // Update the emoji state after saving
+                            // setTempEmoji(tempEmoji); // Update the emoji state after saving
                             onClose();
                         }}>Save</button>
                     </div>
