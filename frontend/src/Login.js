@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import './login.css';
 import logo from './logo/black_logo_text.svg';
 import axios from 'axios';
-import api from './api';
+import api, { setAuthToken } from './api';
 
 function Login({ onClose, user, setUser }) {
   const navigate = useNavigate();
@@ -24,6 +24,7 @@ function Login({ onClose, user, setUser }) {
     e.preventDefault();
     try {
       const res = await api.post('/auth/login', { email, password });
+      setAuthToken(res.data.token);
       setUser(res.data);
       setErrorMessage("");
       navigate("/dashboard");

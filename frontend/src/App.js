@@ -9,7 +9,7 @@ import Profile from './Profile';
 import ProtectedRoutes from './utils/protectedRoutes';
 import GuestRoutes from './utils/guestRoutes';
 import axios from 'axios';
-import api from './api';
+import api, { setAuthToken } from './api';
 
 
 // Main Home page
@@ -104,7 +104,9 @@ function App() {
               });
               
               // Save access token to state memory
-              setAccessToken(res.data.accessToken);
+              const newAccessToken = res.data.accessToken;
+              setAuthToken(newAccessToken);
+              setAccessToken(newAccessToken);
 
               // Get User's data and set User
               const userRes = await axios.get('/api/auth/me', {

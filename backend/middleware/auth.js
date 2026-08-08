@@ -2,6 +2,7 @@ const User = require('../models/User.js');
 const jwt = require('jsonwebtoken');
 
 const protect = async (req, res, next) => {
+    console.log("🔥 PROTECT START");
     let token;
 
     // Authorisation: Bearer <token>

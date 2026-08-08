@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { RxCross1 } from "react-icons/rx";
 import { BsEmojiSmile } from "react-icons/bs";
 import EmojiPicker from 'emoji-picker-react';
+import api from '../api';
 
 function EditStatus({isOpen, user, setUser, onClose}) {
     const [text, setText] = useState(user.statusMessage);
@@ -10,8 +11,20 @@ function EditStatus({isOpen, user, setUser, onClose}) {
     const [tempEmoji, setTempEmoji] = useState(user?.statusEmoji || null); // Before Save button is clicked
     const statusLength = text.length;
 
-    if (!isOpen) return null;
+    const handleSave = async () => {
+        try {
+            const res = await api.put('/profile/status', {
+                statusMessage: text,
+                statusEmoji: tempEmoji
+            });
+            console.log('RESPONSE', res.data);
+        } catch (error) {
+            console.error('Error:', error.response?.data || error);
+        }
+    }
 
+    if (!isOpen) return null;
+    
 
     return (
         <div className="overlay">
@@ -63,17 +76,7 @@ function EditStatus({isOpen, user, setUser, onClose}) {
                         <p id="count-chars">{statusLength}/40</p>
 
                         {/* Save Button */}
-                        <button className="save-button" onClick={() => {
-                            // Temporarily store the updated status message and emoji in the user state
-                            // need to use API to update the user status in the backend
-                            setUser({
-                                ...user,
-                                statusMessage: text,
-                                statusEmoji: tempEmoji
-                            });
-                            // setTempEmoji(tempEmoji); // Update the emoji state after saving
-                            onClose();
-                        }}>Save</button>
+                        <button className="save-button" onClick={handleSave}>Save</button>
                     </div>
                     
                 </div>
