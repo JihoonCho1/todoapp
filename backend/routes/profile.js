@@ -41,9 +41,17 @@ const upload = multer({ storage });
 
 //Update User Status
 router.put("/status", protect, async(req, res) => {
-    console.log("STATUS ROUTE HIT");
+    const { statusMessage, statusEmoji } = req.body;
 
-    res.json({ message: "Status route works" });
+    const editUser = await User.findById(req.user._id);
+
+    editUser.statusMessage = statusMessage;
+    editUser.statusEmoji = statusEmoji;
+
+    await editUser.save();
+
+    res.json({ statusMessage, statusEmoji });
+
 })
 
 module.exports = router;

@@ -17,7 +17,13 @@ function EditStatus({isOpen, user, setUser, onClose}) {
                 statusMessage: text,
                 statusEmoji: tempEmoji
             });
+            setUser(prevUser => ({
+                ...prevUser,
+                statusMessage: res.data.statusMessage,
+                statusEmoji: res.data.statusEmoji
+            }));
             console.log('RESPONSE', res.data);
+            onClose();
         } catch (error) {
             console.error('Error:', error.response?.data || error);
         }
